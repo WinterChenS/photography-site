@@ -5,11 +5,9 @@ import com.winterchen.common.dto.UserDTO;
 import com.winterchen.service.modules.admin.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,15 +32,16 @@ public class TestController {
     }
 
     @ApiOperation("查找用户信息列表")
-    @GetMapping("/user")
+    @GetMapping("/users")
     public APIResponse<List<UserDTO>> listUser() {
         return APIResponse.success(userService.listUser());
     }
 
     @ApiOperation("根据编号查找用户信息")
-    @GetMapping("/user/{id}")
+    @GetMapping("/user")
     public APIResponse<UserDTO> findUserById(
-            @PathVariable("id")
+            @ApiParam(name = "id", value = "编号", required = false)
+            @RequestParam(name = "id", required = false)
             Long id
     ) {
         return APIResponse.success(userService.findUserById(id));
