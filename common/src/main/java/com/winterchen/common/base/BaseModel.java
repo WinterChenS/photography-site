@@ -38,7 +38,7 @@ public class BaseModel implements Serializable {
     @TableField("update_time")
     @ApiModelProperty(value = "更新时间", hidden = true)
     private Timestamp updateTime;
-    
+
 
     /* 分组校验 */
     public @interface Create {}
