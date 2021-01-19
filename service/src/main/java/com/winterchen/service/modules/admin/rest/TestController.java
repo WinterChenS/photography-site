@@ -7,6 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,7 +35,16 @@ public class TestController {
 
     @ApiOperation("查找用户信息列表")
     @GetMapping("/user")
-    public APIResponse<List<UserDTO>> findUserList() {
-        return APIResponse.success(userService.findUserList());
+    public APIResponse<List<UserDTO>> listUser() {
+        return APIResponse.success(userService.listUser());
+    }
+
+    @ApiOperation("根据编号查找用户信息")
+    @GetMapping("/user/{id}")
+    public APIResponse<UserDTO> findUserById(
+            @PathVariable("id")
+            Long id
+    ) {
+        return APIResponse.success(userService.findUserById(id));
     }
 }

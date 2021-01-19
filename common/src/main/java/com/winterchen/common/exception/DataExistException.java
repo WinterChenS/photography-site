@@ -14,9 +14,18 @@ public class DataExistException extends RuntimeException{
         super(DataExistException.generateMessage(clazz.getSimpleName(), field, val));
     }
 
+    public DataExistException(Class clazz) {
+        super(DataExistException.generateMessage(clazz.getSimpleName()));
+    }
+
     private static String generateMessage(String entity, String field, String val) {
         return StringUtils.capitalize(entity)
                 + " with " + field + " "+ val + " existed";
+    }
+
+    private static String generateMessage(String entity) {
+        return StringUtils.capitalize(entity)
+                + " is existed";
     }
 
 }

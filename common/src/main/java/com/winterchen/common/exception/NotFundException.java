@@ -16,6 +16,10 @@ public class NotFundException extends RuntimeException{
 
     private Integer status = BAD_REQUEST.value();
 
+    public NotFundException() {
+        super(BAD_REQUEST.getReasonPhrase());
+    }
+
     public NotFundException(String msg){
         super(msg);
     }

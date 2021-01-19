@@ -1,5 +1,6 @@
 package com.winterchen.service.modules.admin.service;
 
+import com.winterchen.common.base.BusinessAssert;
 import com.winterchen.common.dto.UserDTO;
 import com.winterchen.service.modules.admin.mapper.UserMapper;
 import com.winterchen.service.modules.admin.mapping.UserMapping;
@@ -27,9 +28,15 @@ public class UserService {
     private UserMapping userMapping;
 
 
-    public List<UserDTO> findUserList(){
+    public List<UserDTO> listUser(){
         List<User> users = userMapper.selectList(null);
         return userMapping.toConvertToDtos(users);
+    }
+
+    public UserDTO findUserById(Long id) {
+        BusinessAssert.meetNotFundCond(id);
+        User user = userMapper.selectById(id);
+        return userMapping.toConvertToDto(user);
     }
 
 }

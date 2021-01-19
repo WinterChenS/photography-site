@@ -13,6 +13,10 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 public class BadConfigException extends RuntimeException {
     private Integer status = INTERNAL_SERVER_ERROR.value();
 
+    public BadConfigException() {
+        super(INTERNAL_SERVER_ERROR.getReasonPhrase());
+    }
+
     public BadConfigException(String msg){
         super(msg);
     }
