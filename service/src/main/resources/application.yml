@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: photography-site-service
+  profiles:
+    active: dev
