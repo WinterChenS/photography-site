@@ -29,7 +29,7 @@ public class BaseModel implements Serializable {
 
     @TableField("update_by")
     @ApiModelProperty(value = "更新人", hidden = true)
-    private String updatedBy;
+    private String updateBy;
 
     @TableField("create_time")
     @ApiModelProperty(value = "创建时间", hidden = true)

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winterchen.service.modules.admin.mapper.RoleMapper">
+  <resultMap id="BaseResultMap" type="com.winterchen.service.modules.admin.model.Role">
+    <id column="role_id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="data_scope" jdbcType="VARCHAR" property="dataScope" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <collection property="menus" column="menu_id" javaType="java.util.HashSet" select="findMenusByRoleId"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_id, `name`, `level`, description, data_scope, create_by, update_by, create_time, 
+    update_time
+  </sql>
+
+  <sql id="Role_Column_List">
+    r.role_id, r.name, r.level, r.description, r.data_scope, r.create_by, r.update_by, r.create_time,
+    r.update_time,r.menus
+  </sql>
+
+
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Role_Column_List"/>
+    from sys_role r
+    left join sys_users_roles ur
+    on r.role_id = ur.role_id
+    left join sys_user u
+    on ur.user_id = u.user_id
+    where u.user_id = #{userId,jdbcType=BIGINT}
+
+  </select>
+
+  <select id="findMenusByRoleId" resultType="com.winterchen.service.modules.admin.model.Menu">
+    select
+    m.*
+    from sys_menu m
+    left join sys_roles_menus rm
+    on m.menu_id = rm.menu_id
+    left join sys_role r
+    on rm.role_id = r.role_id
+    where r.role_id = #{roleId,jdbcType=BIGINT}
+  </select>
+
+</mapper>

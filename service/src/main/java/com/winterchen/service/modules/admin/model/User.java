@@ -24,7 +24,7 @@ import java.util.Date;
 public class User extends BaseModel {
 
     @TableId("user_id")
-    private Long id;
+    private Long userId;
 
     private String username;
 

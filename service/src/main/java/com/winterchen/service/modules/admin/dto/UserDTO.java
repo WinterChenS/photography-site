@@ -1,4 +1,4 @@
-package com.winterchen.common.dto;
+package com.winterchen.service.modules.admin.dto;
 
 import com.winterchen.common.base.BaseModel;
 import io.swagger.annotations.ApiModel;
@@ -26,7 +26,7 @@ public class UserDTO extends BaseModel implements Serializable{
     private static final long serialVersionUID = -6184251877108652580L;
 
     @ApiModelProperty("主键")
-    private Long id;
+    private Long userId;
 
     @ApiModelProperty("用户名")
     private String username;
