@@ -1,8 +1,10 @@
 package com.winterchen.service.modules.admin.mapping;
 
-import com.winterchen.common.dto.UserDTO;
+import com.winterchen.service.modules.admin.dto.UserDTO;
 import com.winterchen.service.modules.admin.model.User;
+import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
@@ -13,10 +15,15 @@ import java.util.List;
  * @description TODO
  **/
 @Mapper(componentModel = "spring")
-public interface UserMapping {
+public abstract class UserMapping {
 
-    UserDTO toConvertToDto(User user);
+    public abstract UserDTO toConvertToDto(User user);
 
-    List<UserDTO> toConvertToDtos(List<User> users);
+    public abstract List<UserDTO> toConvertToDtos(List<User> users);
+
+    @AfterMapping
+    public UserDTO afterMapping(User user, @MappingTarget UserDTO.UserDTOBuilder target) {
+        return target.build();
+    }
 
 }

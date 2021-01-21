@@ -12,4 +12,7 @@ import com.winterchen.service.modules.admin.model.User;
 public interface UserMapper extends BaseMapper<User> {
 
 
+    User selectByUsername(String username);
+
+    
 }

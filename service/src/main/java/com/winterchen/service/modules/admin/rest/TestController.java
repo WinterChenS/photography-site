@@ -1,7 +1,7 @@
 package com.winterchen.service.modules.admin.rest;
 
 import com.winterchen.common.base.APIResponse;
-import com.winterchen.common.dto.UserDTO;
+import com.winterchen.service.modules.admin.dto.UserDTO;
 import com.winterchen.service.modules.admin.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

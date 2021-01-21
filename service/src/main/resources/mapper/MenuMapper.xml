@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winterchen.service.modules.admin.mapper.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.winterchen.service.modules.admin.model.Menu">
+    <id column="menu_id" jdbcType="BIGINT" property="menuId" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="sub_count" jdbcType="INTEGER" property="subCount" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="component" jdbcType="VARCHAR" property="component" />
+    <result column="menu_sort" jdbcType="INTEGER" property="menuSort" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="i_frame" jdbcType="BIT" property="iFrame" />
+    <result column="cache" jdbcType="BIT" property="cache" />
+    <result column="hidden" jdbcType="BIT" property="hidden" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    menu_id, pid, sub_count, `type`, title, `name`, component, menu_sort, icon, `path`, 
+    i_frame, `cache`, hidden, permission, create_by, update_by, create_time, update_time
+  </sql>
+
+</mapper>

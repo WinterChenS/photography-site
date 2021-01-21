@@ -15,9 +15,9 @@ import org.springframework.util.ObjectUtils;
 public class BusinessAssert {
 
 
-    public static void meetDefaultCond(boolean condition, ResponseCodeInterface responseCodeInterface) {
+    public static void meetDefaultCond(boolean condition, String message) {
         if (condition) {
-            throw new BusinessException(responseCodeInterface.getMessage());
+            throw new BusinessException(message);
         }
     }
 
@@ -35,6 +35,12 @@ public class BusinessAssert {
 
     public static void meetNotFundCond(Object obj, String message) {
         if (ObjectUtils.isEmpty(obj)) {
+            throw new NotFundException(message);
+        }
+    }
+
+    public static void meetNotFundCond(boolean condition, String message) {
+        if (condition) {
             throw new NotFundException(message);
         }
     }
